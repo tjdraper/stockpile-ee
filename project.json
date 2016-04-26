@@ -1,0 +1,27 @@
+{
+	"about-this-file": "This is your grunt configuration file. All keys are required so do not remove any of them, but you may change their values",
+	"root": "themes/user",
+	"assets": "stockpile",
+	"source": "assetsSource",
+	"proxy": false,
+	"watch": [
+	],
+	"lessCompress": true,
+	"lessBuild": [
+	],
+	"lessFiles": {
+	},
+	"jsBuildBefore": [
+	],
+	"jsBuild": [
+	],
+	"jsBuildAfter": [
+	],
+	"jsFiles": {
+	},
+	"jsCompress": true,
+	"sourceMaps": true,
+	"enabledJsComponents": [
+		"base"
+	]
+}

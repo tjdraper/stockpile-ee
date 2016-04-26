@@ -1,0 +1,13 @@
+{
+	"author": "TJ Draper",
+	"authorUrl": "https://buzzingpixel.com",
+	"bugs": "",
+	"description": "Save and retrieve content",
+	"docsUrl": "",
+	"homepage": "",
+	"label": "StockPile",
+	"name": "stockpile",
+	"namespace": "BuzzingPixel\\Stockpile",
+	"settingsExist": false,
+	"version": "0.1.0"
+}
