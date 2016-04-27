@@ -14,9 +14,6 @@ class Installer
 	{
 		// Add module
 		ModuleInstaller::add();
-
-		// Add extension
-		ExtensionInstaller::add();
 	}
 
 	/**
@@ -26,9 +23,6 @@ class Installer
 	{
 		// Remove module
 		ModuleInstaller::remove();
-
-		// Remove extension
-		ExtensionInstaller::remove();
 	}
 
 	/**
@@ -38,8 +32,5 @@ class Installer
 	{
 		// Update module
 		ModuleInstaller::update();
-
-		// Update extension
-		ExtensionInstaller::update();
 	}
 }
