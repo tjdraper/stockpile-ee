@@ -86,4 +86,12 @@ class Stockpile
 	{
 		return $this->applyController('getPair', 'SetParams');
 	}
+
+	/**
+	 * Apply template
+	 */
+	public function apply_template()
+	{
+		return $this->applyController('applyTemplate', 'ApplyTemplateParams');
+	}
 }

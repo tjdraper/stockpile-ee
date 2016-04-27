@@ -4,6 +4,7 @@ namespace BuzzingPixel\Stockpile\Controller;
 
 use BuzzingPixel\Stockpile\Service\Tag\ProcessSetPair;
 use BuzzingPixel\Stockpile\Service\Tag\Vars;
+use BuzzingPixel\Stockpile\Factory\Template;
 
 class Tag
 {
@@ -217,5 +218,38 @@ class Tag
 
 		// Parse variables
 		return Vars::parse($vars, $this->tagParams->namespace, $this->tagData);
+	}
+
+	/**
+	 * Apply Template tag
+	 *
+	 * @return string
+	 */
+	public function applyTemplate()
+	{
+		// Make sure a template is specified
+		if (! $template = $this->tagParams->template) {
+			return;
+		}
+
+		// Get the template
+		$template = Template::get($template);
+
+		// Make sure we have a template
+		if (! $template) {
+			return null;
+		}
+
+		// Get the tag pair set data
+		$processSetPair = new ProcessSetPair($this->tagParams, $this->tagData);
+
+		// Parse variables with specified template
+		return Vars::parse(
+			array(
+				$processSetPair->pairData
+			),
+			$this->tagParams->namespace,
+			$template->template_data
+		);
 	}
 }
