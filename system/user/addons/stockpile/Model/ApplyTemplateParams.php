@@ -9,6 +9,7 @@ class ApplyTemplateParams extends ParamsBase
 {
 	protected $template = 'string';
 	protected $namespace = 'string';
+	protected $pair = 'string';
 
 	/**
 	 * Set default namespace

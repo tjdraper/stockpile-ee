@@ -3,6 +3,7 @@
 namespace BuzzingPixel\Stockpile\Controller;
 
 use BuzzingPixel\Stockpile\Service\Tag\ProcessSetPair;
+use BuzzingPixel\Stockpile\Service\Tag\PrefixedParams;
 use BuzzingPixel\Stockpile\Service\Tag\Vars;
 use BuzzingPixel\Stockpile\Factory\Template;
 
@@ -10,6 +11,7 @@ class Tag
 {
 	// Class properties
 	private $tagData;
+	private $rawTagParams;
 	private $tagParams;
 
 	/**
@@ -20,6 +22,8 @@ class Tag
 	 */
 	public function __construct($tagData = '', $tagParams = array(), $tagModel = '')
 	{
+		$this->rawTagParams = $tagParams;
+
 		$this->tagData = $tagData;
 
 		if ($tagModel) {
@@ -240,13 +244,22 @@ class Tag
 			return null;
 		}
 
+		// Check for additional variables
+		$additionalVariables = new PrefixedParams('var', $this->rawTagParams);
+
 		// Get the tag pair set data
 		$processSetPair = new ProcessSetPair($this->tagParams, $this->tagData);
+
+		// Merge variables
+		$vars = array_merge(
+			$additionalVariables->params,
+			$processSetPair->pairData
+		);
 
 		// Parse variables with specified template
 		return Vars::parse(
 			array(
-				$processSetPair->pairData
+				$vars
 			),
 			$this->tagParams->namespace,
 			$template->template_data
